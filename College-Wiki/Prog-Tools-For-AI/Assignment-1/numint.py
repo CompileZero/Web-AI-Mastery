@@ -39,12 +39,12 @@ def numint_py(f, a, b, n):
         range_list.append(del_x)
         del_x += w
 
-    area_under_equation = 0
+    area_under_curve = 0
     for del_value in range_list:
         temp_y = f(del_value)
-        area_under_equation += temp_y * w
+        area_under_curve += temp_y * w
 
-    return area_under_equation
+    return area_under_curve
 
 
 def numint(f, a, b, n, scheme='mp'):
@@ -67,25 +67,22 @@ def numint(f, a, b, n, scheme='mp'):
     """
     # STUDENTS ADD CODE FROM HERE TO END OF FUNCTION
     w = (b - a) / n
-    area_under_equation = 0
-    del_x = a
+    area_under_curve = 0
     range_list = np.arange(a, b, w)
-    # print("range list - ", range_list)
-    for i, del_value in enumerate(range_list):
-        if scheme == "lb":
-            # print("i - ", i)
-            temp_y = f(range_list[i])
-            # print("temp_y - ", temp_y)
-        elif scheme == "ub":
-            # print(i+1)
-            temp_y = f(range_list[i + 1])
-        elif scheme == "mp":
-            if i+1 < n:
-                temp_y = f(((range_list[i] + range_list[i + 1]) / 2))
+    range_val = len(range_list)
+    if scheme == "ub" or scheme == "mp":
+        range_list = np.insert(range_list, len(range_list), b)
 
-        area_under_equation += temp_y * w
-    # print(area_under_equation)
-    return area_under_equation
+    for i in range(0, range_val):
+        if scheme == "lb":
+            temp_y = f(range_list[i])
+        elif scheme == "ub":
+            temp_y = f(range_list[i+1])
+        elif scheme == "mp":
+            temp_y = f(((range_list[i] + range_list[i + 1]) / 2))
+        area_under_curve += temp_y * w
+
+    return area_under_curve
 
 
 def true_integral(fstr, a, b):
@@ -129,6 +126,12 @@ def numint_err(fstr, a, b, n, scheme):
     """
     f = eval("lambda x: " + fstr)  # f is a Python function
     A = true_integral(fstr, a, b)
+    num_integ = numint(f, a, b, n, scheme)
+
+    absolute_error = abs(A - num_integ)
+    relative_error = absolute_error / A
+
+    return A, absolute_error, relative_error
     # STUDENTS ADD CODE FROM HERE TO END OF FUNCTION
 
 
@@ -159,14 +162,26 @@ def make_table(f_ab_s, ns, schemes):
 
     # STUDENTS ADD CODE FROM HERE TO END OF FUNCTION
 
+    for i in range(0, len(f_ab_s)):
+        for n in ns:
+            for scheme in schemes:
+                f, a, b = f_ab_s[i]
+                A, abs_err, rel_err = numint_err(str(f), a, b, n, scheme)
+                # A = true_integral(str(f), a, b)
+                # num_integ = numint(f, a, b, n, scheme)
+                print("%s,%.2f,%.2f,%d,%s,%.4g,%.4g,%.4g" %
+                      (f, a, b, n, scheme, A, abs_err, rel_err))
+
 
 def main():
     """Call make_table() as specified in the pdf."""
     # STUDENTS ADD CODE FROM HERE TO END OF FUNCTION
     # print(round(true_integral("np.sin(x)", 0, 1), 2))
     # numint_py(1, 0, 1, 4)
-    numint_py(lambda x: x, 0, 4, 4)
-    numint(np.sin, 0, 1, 4, "lb")
+    # numint_py(lambda x: x, 0, 4, 4)
+    # numint(np.sin, 0, 1, 4, "lb")
+    numint(lambda x: x, 0, 4, 4, "ub")
+    # print(true_integral("x", 0, 4))
 
 
 """
