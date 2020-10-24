@@ -36,13 +36,13 @@ def numint_py(f, a, b, n):
     del_x = a
     range_list = []
     while del_x <= b:
-        range_list.append(del_x)
-        del_x += w
+        range_list.append(del_x)    # List of bounds
+        del_x += w       # claculating range for bounds based on width
 
     area_under_curve = 0
     for del_value in range_list:
-        temp_y = f(del_value)
-        area_under_curve += temp_y * w
+        temp_y = f(del_value)       #
+        area_under_curve += temp_y * w  # total area under curve
 
     return area_under_curve
 
@@ -66,18 +66,20 @@ def numint(f, a, b, n, scheme='mp'):
 
     """
     # STUDENTS ADD CODE FROM HERE TO END OF FUNCTION
-    w = (b - a) / n
+    w = (b - a) / n         # width of one slice
     area_under_curve = 0
+    # list of bounds based on width of slice
     range_list = np.arange(a, b, w)
     range_val = len(range_list)
     if scheme == "ub" or scheme == "mp":
+        # array incremented for upper bound
         range_list = np.insert(range_list, len(range_list), b)
 
     for i in range(0, range_val):
         if scheme == "lb":
-            temp_y = f(range_list[i])
+            temp_y = f(range_list[i])   # starting from index 0 for lb
         elif scheme == "ub":
-            temp_y = f(range_list[i+1])
+            temp_y = f(range_list[i+1])  # starting from index 1 for ub
         elif scheme == "mp":
             temp_y = f(((range_list[i] + range_list[i + 1]) / 2))
         area_under_curve += temp_y * w
@@ -126,8 +128,9 @@ def numint_err(fstr, a, b, n, scheme):
     """
     f = eval("lambda x: " + fstr)  # f is a Python function
     A = true_integral(fstr, a, b)
-    num_integ = numint(f, a, b, n, scheme)
+    num_integ = numint(f, a, b, n, scheme)  # storing area returned by numint
 
+    # absolute value of (true integral - area)
     absolute_error = abs(A - num_integ)
     relative_error = absolute_error / A
 
@@ -165,10 +168,10 @@ def make_table(f_ab_s, ns, schemes):
     for i in range(0, len(f_ab_s)):
         for n in ns:
             for scheme in schemes:
-                f, a, b = f_ab_s[i]
+                f, a, b = f_ab_s[i]  # storing values from tuple
+
+                # values stored returned by numint_err
                 A, abs_err, rel_err = numint_err(str(f), a, b, n, scheme)
-                # A = true_integral(str(f), a, b)
-                # num_integ = numint(f, a, b, n, scheme)
                 print("%s,%.2f,%.2f,%d,%s,%.4g,%.4g,%.4g" %
                       (f, a, b, n, scheme, A, abs_err, rel_err))
 
@@ -176,12 +179,9 @@ def make_table(f_ab_s, ns, schemes):
 def main():
     """Call make_table() as specified in the pdf."""
     # STUDENTS ADD CODE FROM HERE TO END OF FUNCTION
-    # print(round(true_integral("np.sin(x)", 0, 1), 2))
-    # numint_py(1, 0, 1, 4)
-    # numint_py(lambda x: x, 0, 4, 4)
-    # numint(np.sin, 0, 1, 4, "lb")
-    numint(lambda x: x, 0, 4, 4, "ub")
-    # print(true_integral("x", 0, 4))
+
+    make_table([("np.cos(x)", 0, np.pi/2),
+                ("np.sin(2*x)", 0, 1), ("np.exp(x)", 0, 1)], [10], ['lb'])
 
 
 """
@@ -205,8 +205,11 @@ def numint_nd(f, a, b, n):
     # are free to use pure Python and/or any other scheme if you prefer.
 
     # Hint: calculate w, the step-size, per dimension
-    w = [(bi - ai) / ni for (ai, bi, ni) in zip(a, b, n)]
-
+    # w = [(bi - ai) / ni for (ai, bi, ni) in zip(a, b, n)]
+    numint_lst = list()
+    for (fi, ai, bi, ni) in zip(f, a, b, n):
+        numint_lst.append(numint(fi, ai, bi, ni, scheme='lb'))
+    return numint_lst
     # STUDENTS ADD CODE FROM HERE TO END OF FUNCTION
 
 
