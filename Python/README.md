@@ -1,4 +1,6 @@
-DSA For Humans
+Python for Humans
+
+[https://github.com/gto76/python-cheatsheet](A Comprehensive Python CheatSheet)
 
 # DS-Algorithms-for-humans
 
