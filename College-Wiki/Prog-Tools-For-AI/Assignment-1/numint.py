@@ -6,14 +6,13 @@ By writing my name below and submitting this file, I/we declare that
 all additions to the provided skeleton file are my/our own work, and that
 I/we have not seen any work on this assignment by another student/group.
 
-Student name(s):
-Student ID(s):
+Student name(s): Tapan Auti, Atharva Kulkarni
+Student ID(s): 20231499, 20231773
 
 """
 
 import numpy as np
 import sympy
-import itertools
 import math
 
 
@@ -30,21 +29,23 @@ def numint_py(f, a, b, n):
     4.64746
 
     """
-    A = 0
     w = (b - a) / n  # width of one slice
-    # STUDENTS ADD CODE FROM HERE TO END OF FUNCTION
-    del_x = a
-    range_list = []
-    while del_x <= b:
-        range_list.append(del_x)    # List of bounds
-        del_x += w       # claculating range for bounds based on width
+    A = 0
+    xn = a
+    x_range = []
+    area = 0
 
-    area_under_curve = 0
-    for del_value in range_list:
-        temp_y = f(del_value)       #
-        area_under_curve += temp_y * w  # total area under curve
+    # Calculate values of x at every width interval (x1, x2, x3 ... xn)
+    while xn <= b:
+        x_range.append(xn)
+        xn += w
 
-    return area_under_curve
+    # Calculate total area
+    for x in x_range:
+        y = f(x)
+        area += y * w
+
+    return area
 
 
 def numint(f, a, b, n, scheme='mp'):
@@ -66,25 +67,29 @@ def numint(f, a, b, n, scheme='mp'):
 
     """
     # STUDENTS ADD CODE FROM HERE TO END OF FUNCTION
-    w = (b - a) / n         # width of one slice
-    area_under_curve = 0
-    # list of bounds based on width of slice
-    range_list = np.arange(a, b, w)
-    range_val = len(range_list)
+
+    w = (b - a) / n  # width of one slice
+    area = 0
+
+    # Calculate values of x at every width interval (x1, x2, x3 ... xn)
+    x_range = np.arange(a, b, w)
+    size_of_list = len(x_range)
+
+    # For scheme 'ub' and 'mp', add point b to x_range
     if scheme == "ub" or scheme == "mp":
-        # array incremented for upper bound
-        range_list = np.insert(range_list, len(range_list), b)
+        x_range = np.insert(x_range, len(x_range), b)
 
-    for i in range(0, range_val):
+    # Calculate total area
+    for i in range(0, size_of_list):
         if scheme == "lb":
-            temp_y = f(range_list[i])   # starting from index 0 for lb
+            y = f(x_range[i])   # Starting from index 0 for 'lb'
         elif scheme == "ub":
-            temp_y = f(range_list[i+1])  # starting from index 1 for ub
+            y = f(x_range[i+1])  # Starting from index 1 for 'ub'
         elif scheme == "mp":
-            temp_y = f(((range_list[i] + range_list[i + 1]) / 2))
-        area_under_curve += temp_y * w
+            y = f(((x_range[i] + x_range[i + 1]) / 2))
+        area += y * w
 
-    return area_under_curve
+    return area
 
 
 def true_integral(fstr, a, b):
@@ -126,16 +131,24 @@ def numint_err(fstr, a, b, n, scheme):
     0.3333 0.0483 0.1450
 
     """
-    f = eval("lambda x: " + fstr)  # f is a Python function
-    A = true_integral(fstr, a, b)
-    num_integ = numint(f, a, b, n, scheme)  # storing area returned by numint
 
-    # absolute value of (true integral - area)
-    absolute_error = abs(A - num_integ)
-    relative_error = absolute_error / A
-
-    return A, absolute_error, relative_error
     # STUDENTS ADD CODE FROM HERE TO END OF FUNCTION
+
+    f = eval("lambda x: " + fstr)  # f is a Python function
+
+    # Calculate true area under the curve
+    A = true_integral(fstr, a, b)
+
+    # Numerical Integration of the curve
+    num_int = numint(f, a, b, n, scheme)
+
+    # Calculate Absolute Error
+    abs_error = abs(A - num_int)
+
+    # Calculate Relative Error
+    rel_error = abs_error / A
+
+    return A, abs_error, rel_error
 
 
 def make_table(f_ab_s, ns, schemes):
@@ -165,12 +178,14 @@ def make_table(f_ab_s, ns, schemes):
 
     # STUDENTS ADD CODE FROM HERE TO END OF FUNCTION
 
+    # For every mathematical function
     for i in range(0, len(f_ab_s)):
+        # For every value of n
         for n in ns:
+            # For every scheme
             for scheme in schemes:
-                f, a, b = f_ab_s[i]  # storing values from tuple
-
-                # values stored returned by numint_err
+                f, a, b = f_ab_s[i]  # Retreive function, a and b from tuple
+                # Calculate True Integral and errors for a particular combination of function, n and scheme
                 A, abs_err, rel_err = numint_err(str(f), a, b, n, scheme)
                 print("%s,%.2f,%.2f,%d,%s,%.4g,%.4g,%.4g" %
                       (f, a, b, n, scheme, A, abs_err, rel_err))
@@ -180,12 +195,21 @@ def main():
     """Call make_table() as specified in the pdf."""
     # STUDENTS ADD CODE FROM HERE TO END OF FUNCTION
 
-    make_table([("np.cos(x)", 0, np.pi/2),
-                ("np.sin(2*x)", 0, 1), ("np.exp(x)", 0, 1)], [10], ['lb'])
+    make_table([("np.cos(x)", 0, np.pi / 2),
+                ("np.sin(2*x)", 0, 1),
+                ("np.exp(x)", 0, 1)],
+               [10, 100, 1000],
+               ['lb', 'mp'])
 
 
 """
-STUDENTS REPLACE THIS TEXT WITH INTERPRETATION OF main() RESULTS
+main() RESULTS: 
+
+Based on the observed results, the values of the absolute and relative error were much lesser for the 'mp' than that of 'lp' for the same equation. Hence, we can conclude that the 'mp' scheme is better than 'lp'.
+
+The relative and absolute error was 95% - 98% lesser in the 'mp' scheme than 'lb' across all the three functions.
+
+When we calculate the area of the error region in the 'mp' scheme, it is much more closer to the true integral value. Hence, 'mp' scheme is preferred (mostly) over the other two schemes.
 """
 
 
@@ -199,6 +223,14 @@ def numint_nd(f, a, b, n):
 
     STUDENTS ADD DOCTESTS
 
+    >>> numint_nd((np.sin, np.cos), (0, 0), (1, 10), (10, 100))
+    [0.41724099961758165, -0.4516141079333242]
+
+    >>> print(*(round(num, 5) for num in (numint_nd((np.sin, np.cos), (0, 0), (1, 10), (10, 100)))))
+    0.41724 -0.45161
+
+    >>> numint_nd((lambda x: x**2, np.exp), (0, 0), (1, 10), (10, 100))
+    [0.2850000000000001, 20942.5440015311]
     """
 
     # My implementation uses Numpy and the mid-point scheme, but you
@@ -206,11 +238,16 @@ def numint_nd(f, a, b, n):
 
     # Hint: calculate w, the step-size, per dimension
     # w = [(bi - ai) / ni for (ai, bi, ni) in zip(a, b, n)]
-    numint_lst = list()
-    for (fi, ai, bi, ni) in zip(f, a, b, n):
-        numint_lst.append(numint(fi, ai, bi, ni, scheme='lb'))
-    return numint_lst
+
     # STUDENTS ADD CODE FROM HERE TO END OF FUNCTION
+
+    num_int = list()
+
+    # For every function, a, b and n from individual tuples
+    for (fi, ai, bi, ni) in zip(f, a, b, n):
+        # Calculate Numerical Integration for retreived values of function, a, b and n
+        num_int.append(numint(fi, ai, bi, ni, scheme='lb'))
+    return num_int
 
 
 if __name__ == "__main__":
