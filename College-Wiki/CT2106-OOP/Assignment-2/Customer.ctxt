@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Customer
+comment0.text=\r\n\ Customer\ class\ contains\ the\ data\ about\ a\ customer\r\n\ firstName,\ LastName,\ emailAddress,\ customerId\r\n\ It\ may\ also\ contain\ to\ the\ Customer's\ Shipping\ Addresses\r\n\ I\ haven't\ implemented\ that\ here\ -\ but\ it\ seems\ like\ \r\n\ realistic\ piece\ of\ data\ to\ include\r\n
+comment1.params=firstName\ surName\ emailAddress
+comment1.target=Customer(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=long\ getId()
+comment3.params=
+comment3.target=java.lang.String\ getFirstName()
+comment4.params=
+comment4.target=java.lang.String\ getLastName()
+comment5.params=
+comment5.target=java.lang.String\ getEmailAddress()
+comment6.params=
+comment6.target=long\ makeCustomerId()
+comment6.text=\r\n\ a\ method\ that\ obtains\ a\ customerId.\r\n\ A\ real\ method\ of\ this\ type\ would\ make\ a\ call\ to\ a\ database\r\n\ or\ database-backed\ system\ to\ to\ obtain\ a\ unique\ Id\r\n
+comment7.params=first
+comment7.target=void\ setFirstName(java.lang.String)
+comment8.params=last
+comment8.target=void\ setLastName(java.lang.String)
+comment9.params=emailAddress
+comment9.target=void\ setEmailAddress(java.lang.String)
+numComments=10

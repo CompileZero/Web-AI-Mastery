@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Item
+comment1.params=itemName\ id
+comment1.target=Item(java.lang.String,\ long)
+comment2.params=price
+comment2.target=void\ setPrice(int)
+comment3.params=
+comment3.target=int\ getPrice()
+comment4.params=
+comment4.target=java.lang.String\ toString()
+comment4.text=\r\n\ toString\ method\ provides\ a\ String\ output\ of\ the\ object\r\n\ every\ object\ has\ a\ generic\ toString\ method\ inherited\ from\r\n\ java.lang.Object\r\n
+numComments=5

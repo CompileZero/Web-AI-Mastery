@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=Order
+comment0.text=\r\n\ Order\ class\ contains\ the\ order\ items\ that\ were\r\n\ finalised\ by\ the\ Cart\ class\r\n\ It\ contains\ all\ the\ data\ required\ to\ get\ the\ order\ \r\n\ from\ order\ initiation\ to\ notificaiton\ to\ \ delivery\r\n
+comment1.params=
+comment1.target=long\ getNewId()
+comment1.text=\r\n\ returns\ an\ ID\ randomly\ generated.\ \r\n\ Math.random\ returns\ a\ random\ value\ between\ 0\ and\ 1\r\n\ This\ is\ multiplied\ by\ 1000000000L\ -\ a\ long\ int\ to\ generated\ a\ long\ int\ number.\r\n\ A\ real\ system\ would\ make\ a\ call\ to\ a\ data\ base\ to\r\n\ retrieve\ a\ unique\ ID\r\n\r\n
+comment10.params=
+comment10.target=java.lang.String\ toString()
+comment10.text=\r\n\ implementation\ of\ the\ toString()\ method\ (inherited\ from\ java.lang.Object)\ which\ returns\r\n\ a\ String\ representation\ of\ the\ object\r\n
+comment2.params=
+comment2.target=long\ getOrderNumber()
+comment3.params=
+comment3.target=long\ getOrderId()
+comment4.params=
+comment4.target=double\ getOrderTotal()
+comment5.params=
+comment5.target=boolean\ getPaymentSucess()
+comment6.params=paymentType
+comment6.target=void\ setPaymentType(java.lang.String)
+comment7.params=paymentType
+comment7.target=java.lang.String\ getPaymentType(java.lang.String)
+comment8.params=status
+comment8.target=void\ setStatus(java.lang.String)
+comment9.params=
+comment9.target=java.lang.String\ getStatus()
+numComments=11

@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Payment
+comment0.text=\r\nThe\ payment\ class\ is\ in\ charge\ of\ validating\ the\ raw\ payment\ \r\ninformaiton\ that\ is\ submitted\ via\ its\ constructor\r\nIt\ also\ has\ the\ capacity\ to\ authorise\ the\ payment\r\n
+comment1.params=
+comment1.target=void\ validate()
+comment1.text=\r\n\ validate()\ is\ the\ method\ called\ by\ Payment\ to\ check\ the\ correctness\ of\r\n\ the\ payment\ data\ submittd\r\n\ If\ the\ data\ is\ validated,\ the\ valid\ field\ is\ set\ to\ true\r\n\ Note\ that\ this\ is\ a\ private\ method.\ This\ means\ that\ this\ method\ is\ not\r\n\ visible\ or\ callable\ outside\ the\ class.\ Only\ other\ Payment\ methods\ can\ call\ it.\r\n\ In\ this\ case,\ the\ Payment\ constructor\ calls\ it\r\n
+comment2.params=order
+comment2.target=void\ makePayment(Order)
+comment2.text=\r\n\ another\ private\ method\ which\ simulates\ the\ action\ of\ the\ Payment\ object\r\n\ acutally\ authorising\ payment.\ As\ a\ private\ method,\ makePayment\ is\ not\r\n\ visible\ or\ callable\ outside\ the\ class.\ Only\ other\ Payment\ methods\ can\ call\ it.\r\n\ In\ this\ case,\ the\ Payment\ constructor\ calls\ it.\r\n\ This\ means\ that\ only\ Payment\ code\ can\ call\ this\ method\ -\ which\ probably\ makes\ sense.\r\n\ It\ sould\ not\ do\ to\ have\ other\ external\ objects\ authorising\ payment\r\n
+comment3.params=
+comment3.target=boolean\ isValid()
+comment3.text=\r\n\ a\ 'getter'\ class\ fo\ the\ valid\ field\r\n\ I\ have\ named\ it\ isValid\ instead\ of\ getValid\ simply\r\n\ because\ it\ will\ read\ better\ when\ called\r\n\ e.g.\ if(payment.isvalid()){\r\n\ \ \ \ \ //\ do\ something\r\n\ \ \ \ \ }\r\n
+numComments=4
