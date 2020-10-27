@@ -1,0 +1,9 @@
+The article by Nissenbaum talks about contextual integrity and how it could be a possible solution to replace the widely used overrated notice-and-consent method.
+
+I believe the methods involving contextual integrity have in a way already been tried on smartphones, where both Android and iOS ask the user about specific permission when he/she accesses a particular feature (requiring particular permission) of any app.
+
+But, this method also seems to be somewhat ineffective. Smartphones account for more aggregated data than all the desktop web-browsers combined and this trend continues to grow exponentially. Mobile operating systems ensure that the privacy aspects of the user are taken into consideration very seriously. Nevertheless, apps end up collecting a lot of user data which the user is mostly unaware of.
+
+I feel the main issue over here is that seeking permissions contextually poses two inherent problems. If the app seeks user permission every time a feature is used, the process becomes intrusive and counter-productive. On the other hand, if the app only seeks user permission once, it may later use data that the user may not wish to share. Furthermore, even if privacy policies are displayed contextually, it still does not take into account the fact, the data may anyway be misused once the user has agreed upon the set policy.
+
+A typical example would be a document scanning app, where the app requests user permission to access the phone gallery. Once, the permission has been granted, the app is free to obtain any photo from a user’s phone gallery. This case has been reported in the past and has caused a lot of havoc concerning privacy on the smartphone. I believe that contextual integrity as an idea seems to be extremely effective in most cases, but would still fail in other circumstances.
