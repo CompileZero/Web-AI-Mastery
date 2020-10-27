@@ -1,6 +1,6 @@
 Python for Humans
 
-[A comprehensive Python CheatSheet] (https://github.com/gto76/python-cheatsheet)
+[A comprehensive Python CheatSheet](https://github.com/gto76/python-cheatsheet)
 
 # DS-Algorithms-for-humans
 
