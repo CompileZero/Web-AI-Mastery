@@ -14,6 +14,3 @@ A Giant repo to master the Web & AI.
 * [Python](./Python)
 
 * [AI](./Artificial-Intelligence)
-
-
-* [College Wiki](./College-Wiki)
