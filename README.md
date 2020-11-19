@@ -18,3 +18,10 @@ A Giant repo to master the Web & AI.
 * [Python](./Python)
 
 * [AI](./Artificial-Intelligence)
+
+
+Github Tutorials:
+
+[Roger Dudler Git Guide](https://rogerdudler.github.io/git-guide/)
+
+[Atlassian Tutorials](https://www.atlassian.com/git/tutorials)
