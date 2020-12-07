@@ -23,3 +23,7 @@ Github Tutorials:
 [Roger Dudler Git Guide](https://rogerdudler.github.io/git-guide/)
 
 [Atlassian Tutorials](https://www.atlassian.com/git/tutorials)
+
+Web Development:
+
+[Brian Holt's Notes on Web Dev](https://btholt.github.io/intro-to-web-dev-v2/)
