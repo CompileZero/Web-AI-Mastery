@@ -1,7 +1,6 @@
 # Web-Mastery
 
-The future of personal computing lies on the Web.
-This repo takes care of that.
+The future of personal computing lies on the Web. This repo takes care of that.
 
 Helping you create a complete journey from a novice to an expert WEB developer, with all the resources provided to you (mostly) free.
 
@@ -13,10 +12,8 @@ I have directly uploaded the PDF copies of the books I have referred to in the p
 
 A Giant repo to master Web Development.
 
-* [JavaScript](./JS/README.md)
-  
-* [Python](./Python)
-
+- [JavaScript](./JS/README.md)
+- [Python](./Python)
 
 Github Tutorials:
 
