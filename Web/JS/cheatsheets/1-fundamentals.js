@@ -1,40 +1,39 @@
 //var, let, const
-//AR - Block Scoped
-var name = 'John Doe';
+//AR - Function Scoped or Global Scoped
+var name = "John Doe";
 console.log(name);
-name = 'Steve Smith';
+name = "Steve Smith";
 console.log(name);
 
 // Init var
 var greeting;
 console.log(greeting);
-greeting = 'Hello';
+greeting = "Hello";
 console.log(greeting);
 
 // letters, numbers, _, $
 // Can not start with number
 
 // Multi word vars
-var firstName = 'John'; // Camel case
-var first_name = 'Sara'; // Underscore
-var FirstName = 'Tom'; // Pascal case
+var firstName = "John"; // Camel case
+var first_name = "Sara"; // Underscore
+var FirstName = "Tom"; // Pascal case
 var firstname;
 
-// LET - Function Scoped
+// LET - Block Scoped
 let name;
-name = 'John Doe';
+name = "John Doe";
 console.log(name);
-name = 'Steve Smith';
+name = "Steve Smith";
 console.log(name);
 
 // CONST - Cannot be reassigned
-const name = 'John';
+const name = "John";
 console.log(name);
 //Can not reassign
-name = 'Sara';
+name = "Sara";
 //Have to assign a value
 const greeting;
-
 
 const person = {
   name: "John",
@@ -196,12 +195,11 @@ val = firstName.lastIndexOf("l"); // O/P: 3
 // charAt()
 val = firstName.charAt("2"); // O/P: "l"
 
-
 // substring()
 val = firstName.substring(0, 4); // O/P: Will
 
 // slice()
-val = firstName.slice(0, 4); // 
+val = firstName.slice(0, 4); //
 val = firstName.slice(-3);
 
 // split()
